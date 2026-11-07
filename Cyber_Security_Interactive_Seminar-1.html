@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security | B.Sc CS Seminar</title>
+<style>
+:root{--bg:#071326;--panel:#101f38;--panel2:#152846;--text:#f4f7fb;--muted:#b6c5dc;--cyan:#43d6e8;--gold:#ffc46a;--green:#73e0b0;--line:#29405f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#142d50 0%,var(--bg) 48%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:22px clamp(18px,5vw,70px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:#071326ed;backdrop-filter:blur(12px);z-index:5}
+.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--cyan)}.menu{display:flex;gap:8px;flex-wrap:wrap}
+button,.navbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font:inherit;transition:.18s}
+button:hover,.navbtn:hover,button.active{border-color:var(--cyan);background:#16304e}
+main{max-width:1160px;margin:auto;padding:30px 22px 60px}
+.hero{padding:42px 0 30px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:center}
+.eyebrow{color:var(--cyan);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.8rem}
+h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.04;margin:.35em 0}h1 span{color:var(--cyan)}h2{font-size:1.8rem;margin:.1em 0 .5em}h3{margin:.15em 0 .5em}
+p{color:var(--muted)}.hero-card,.panel,.card{background:linear-gradient(145deg,var(--panel),#0c1a30);border:1px solid var(--line);border-radius:20px;padding:22px}
+.hero-card{min-height:220px;display:flex;flex-direction:column;justify-content:center}
+.hero-card .shield{font-size:4.4rem;text-align:center;filter:drop-shadow(0 0 22px #43d6e855)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.primary{background:var(--cyan);color:#061326;border-color:var(--cyan);font-weight:800}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 25px}
+.section{display:none;animation:fade .2s ease}.section.show{display:block}
+@keyframes fade{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{padding:18px}.card .icon{font-size:1.65rem}.card p{margin-bottom:0}
+.kicker{font-size:.8rem;color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+ul{padding-left:1.25rem;color:var(--muted)}li{margin:.45em 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;color:var(--muted)}td,th{border-bottom:1px solid var(--line);padding:11px;text-align:left}th{color:var(--cyan)}
+.callout{border-left:4px solid var(--gold);background:#1c2a3e;padding:14px 17px;border-radius:8px;color:var(--muted);margin:16px 0}
+details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px 16px;margin:10px 0}summary{cursor:pointer;font-weight:700}details p{margin-bottom:3px}
+.quiz-question{border:1px solid var(--line);padding:18px;border-radius:15px;margin:12px 0;background:var(--panel)}
+.quiz-question label{display:block;padding:7px 0;color:var(--muted);cursor:pointer}.result{font-weight:800;color:var(--green);margin-top:12px}
+footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted)}
+@media(max-width:780px){header{align-items:flex-start;flex-direction:column}.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.tabs button{flex:1 1 42%}main{padding-left:15px;padding-right:15px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">CYBER<span>SECURITY</span> · SEMINAR</div>
+  <div class="menu"><button onclick="showSection('overview')">Home</button><button onclick="showSection('quiz')">Quick Quiz</button><button onclick="window.print()">Print / Save PDF</button></div>
+</header>
+<main>
+<section class="hero">
+ <div>
+  <div class="eyebrow">B.Sc Computer Science · Seminar</div>
+  <h1>Protecting the <span>Digital World</span></h1>
+  <p>Explore cyber security through clear explanations, real-life examples, safety practices, a glossary, and a short quiz. Each topic has its own clickable section.</p>
+  <div class="actions"><button class="primary" onclick="showSection('definition')">Start learning →</button><button onclick="showSection('speaker')">Presentation script</button></div>
+ </div>
+ <div class="hero-card"><div class="shield">🛡️</div><h2 style="text-align:center">Think. Verify. Protect.</h2><p style="text-align:center">Presented by <strong>Somesh Pal</strong><br>B.Sc Computer Science</p></div>
+</section>
+
+<div class="tabs" aria-label="Topic navigation">
+<button class="active" onclick="showSection('overview',this)">Overview</button>
+<button onclick="showSection('definition',this)">What is Cyber Security?</button>
+<button onclick="showSection('cia',this)">CIA Triad</button>
+<button onclick="showSection('types',this)">Types</button>
+<button onclick="showSection('threats',this)">Threats</button>
+<button onclick="showSection('importance',this)">Importance</button>
+<button onclick="showSection('protection',this)">Safety Tips</button>
+<button onclick="showSection('careers',this)">Careers</button>
+<button onclick="showSection('glossary',this)">Glossary</button>
+<button onclick="showSection('speaker',this)">5-min Script</button>
+<button onclick="showSection('quiz',this)">Quiz</button>
+<button onclick="showSection('questions',this)">Teacher Q&A</button>
+</div>
+
+<section id="overview" class="section show">
+ <div class="panel"><div class="eyebrow">Start here</div><h2>Cyber Security at a glance</h2><p>Cyber security is the practice of protecting digital devices, networks, applications, and information against unauthorized access, disruption, theft, or damage.</p>
+ <div class="grid">
+  <div class="card"><div class="icon">🔐</div><h3>Protect data</h3><p>Keep private and sensitive information safe.</p></div>
+  <div class="card"><div class="icon">🧱</div><h3>Defend systems</h3><p>Reduce risks to devices, apps, and networks.</p></div>
+  <div class="card"><div class="icon">🧠</div><h3>Build awareness</h3><p>Recognize scams and make safer choices online.</p></div>
+ </div><div class="callout">Core message: technology can help us, but safe habits and security controls must work together.</div></div>
+</section>
+
+<section id="definition" class="section">
+ <div class="panel"><div class="eyebrow">01 · Definition</div><h2>What is Cyber Security?</h2><p>Cyber security combines technologies, processes, and practices used to protect systems and data from cyber threats. It includes prevention, detection, response, and recovery.</p>
+ <div class="two"><div class="card"><h3>Example: College account</h3><p>A unique password and multi-factor authentication can help prevent someone else from accessing your student account.</p></div><div class="card"><h3>Example: Online payment</h3><p>Checking the recipient and using a trusted payment app helps reduce the chance of fraud.</p></div></div>
+ <h3>Four parts of a security approach</h3><ul><li><strong>Prevent:</strong> make attacks harder.</li><li><strong>Detect:</strong> notice suspicious activity.</li><li><strong>Respond:</strong> contain an incident and investigate.</li><li><strong>Recover:</strong> restore services and learn from the event.</li></ul></div>
+</section>
+
+<section id="cia" class="section">
+ <div class="panel"><div class="eyebrow">02 · Foundation</div><h2>The CIA Triad</h2><p>A classic information-security model built around three goals:</p>
+ <div class="grid">
+ <div class="card"><div class="icon">🔒</div><h3>Confidentiality</h3><p>Information is seen only by authorized people. Examples: access permissions and encryption.</p></div>
+ <div class="card"><div class="icon">✅</div><h3>Integrity</h3><p>Information stays accurate and is not changed improperly. Examples: checksums and controlled editing.</p></div>
+ <div class="card"><div class="icon">🟢</div><h3>Availability</h3><p>Systems and data are ready when authorized users need them. Examples: backups and reliable infrastructure.</p></div>
+ </div><div class="callout">Memory trick: C = keep it private · I = keep it correct · A = keep it accessible.</div></div>
+</section>
+
+<section id="types" class="section">
+ <div class="panel"><div class="eyebrow">03 · Security areas</div><h2>Types of Cyber Security</h2><div class="grid">
+ <div class="card"><h3>Network Security</h3><p>Protects network traffic and infrastructure using firewalls, segmentation, and monitoring.</p></div>
+ <div class="card"><h3>Application Security</h3><p>Reduces software weaknesses through secure design, testing, and updates.</p></div>
+ <div class="card"><h3>Information Security</h3><p>Protects information in any form, including access control and data handling.</p></div>
+ <div class="card"><h3>Cloud Security</h3><p>Protects cloud-hosted data, accounts, services, and configurations.</p></div>
+ <div class="card"><h3>Endpoint Security</h3><p>Protects laptops, desktops, phones, and other connected devices.</p></div>
+ <div class="card"><h3>Identity & Access</h3><p>Ensures users prove who they are and receive only needed permissions.</p></div>
+ </div></div>
+</section>
+
+<section id="threats" class="section">
+ <div class="panel"><div class="eyebrow">04 · Risk awareness</div><h2>Common Cyber Threats</h2><div class="grid">
+ <div class="card"><h3>🎣 Phishing</h3><p>Fake emails, messages, or pages that trick people into revealing data or clicking unsafe links.</p><p><strong>Clue:</strong> unexpected urgency or a suspicious sender.</p></div>
+ <div class="card"><h3>🦠 Malware</h3><p>Malicious software that can spy, damage, disrupt, or gain unauthorized access.</p></div>
+ <div class="card"><h3>🔐 Ransomware</h3><p>Malware that encrypts or locks files and demands payment. Backups and updates help reduce risk.</p></div>
+ <div class="card"><h3>🔑 Password attacks</h3><p>Attempts to guess, reuse, or exploit stolen passwords. Unique passwords and MFA help.</p></div>
+ <div class="card"><h3>🪪 Identity theft</h3><p>Using someone’s personal information without permission, often for fraud.</p></div>
+ <div class="card"><h3>🌐 DoS / DDoS</h3><p>Flooding a service with traffic so legitimate users may not be able to access it.</p></div>
+ </div><div class="callout">If a message asks for your password, one-time code, or urgent payment, stop and verify through a separate trusted channel.</div></div>
+</section>
+
+<section id="importance" class="section">
+ <div class="panel"><div class="eyebrow">05 · Why it matters</div><h2>Importance of Cyber Security</h2><ul>
+ <li>Protects personal, academic, financial, and business information.</li><li>Helps prevent unauthorized access and data breaches.</li><li>Reduces financial loss, downtime, and reputational damage.</li><li>Supports privacy, trust, and safe digital communication.</li><li>Helps organizations maintain services and meet responsibilities.</li>
+ </ul><h3>Who needs it?</h3><p>Students, families, colleges, companies, hospitals, banks, and public services—all users of digital systems.</p></div>
+</section>
+
+<section id="protection" class="section">
+ <div class="panel"><div class="eyebrow">06 · Everyday defense</div><h2>How to Stay Safe Online</h2><div class="grid">
+ <div class="card"><h3>Use strong passwords</h3><p>Choose long, unique passwords or passphrases. A password manager can help.</p></div>
+ <div class="card"><h3>Enable MFA / 2FA</h3><p>Add another verification step, such as an authenticator app or security key.</p></div>
+ <div class="card"><h3>Verify links</h3><p>Check the sender and domain. Navigate to important sites yourself instead of trusting message links.</p></div>
+ <div class="card"><h3>Update devices</h3><p>Install trusted system and app updates to fix known vulnerabilities.</p></div>
+ <div class="card"><h3>Back up important files</h3><p>Keep backups in a separate or protected location and periodically test recovery.</p></div>
+ <div class="card"><h3>Secure Wi-Fi</h3><p>Use trusted networks, a strong router password, and avoid sensitive tasks on unknown networks.</p></div>
+ </div><div class="callout"><strong>Simple rule:</strong> Pause before you click. Verify before you share. Report if something seems wrong.</div></div>
+</section>
+
+<section id="careers" class="section">
+ <div class="panel"><div class="eyebrow">07 · Computer science careers</div><h2>Career Paths in Cyber Security</h2><div class="grid">
+ <div class="card"><h3>Security Analyst</h3><p>Monitors systems, investigates alerts, and helps respond to incidents.</p></div>
+ <div class="card"><h3>Penetration Tester</h3><p>Tests systems with explicit authorization to find weaknesses and report fixes.</p></div>
+ <div class="card"><h3>Security Engineer</h3><p>Builds and maintains security controls, tools, and infrastructure.</p></div>
+ <div class="card"><h3>Incident Responder</h3><p>Helps contain, investigate, and recover from security incidents.</p></div>
+ <div class="card"><h3>Digital Forensics Analyst</h3><p>Examines digital evidence using lawful and documented methods.</p></div>
+ <div class="card"><h3>Security Researcher</h3><p>Studies vulnerabilities and defensive techniques responsibly.</p></div>
+ </div><p>Helpful foundations: computer networks, operating systems, programming, Linux basics, communication, and ethical practice.</p></div>
+</section>
+
+<section id="glossary" class="section">
+ <div class="panel"><div class="eyebrow">Quick reference</div><h2>Cyber Security Glossary</h2>
+ <table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+ <tr><td>Firewall</td><td>Controls network traffic according to security rules.</td></tr>
+ <tr><td>Encryption</td><td>Transforms readable data into a protected form that requires a key to read.</td></tr>
+ <tr><td>Authentication</td><td>Verifies the identity of a user or system.</td></tr>
+ <tr><td>Authorization</td><td>Determines what an authenticated user is allowed to do.</td></tr>
+ <tr><td>Vulnerability</td><td>A weakness that could be exploited.</td></tr>
+ <tr><td>Patch</td><td>A software update that fixes bugs or security issues.</td></tr>
+ <tr><td>Backup</td><td>A separate copy of data used for recovery.</td></tr>
+ <tr><td>Social engineering</td><td>Manipulating people into taking an unsafe action or sharing information.</td></tr>
+ </tbody></table></div>
+</section>
+
+<section id="speaker" class="section">
+ <div class="panel"><div class="eyebrow">Ready to present</div><h2>5-Minute Speaking Script</h2>
+ <details open><summary>Slide 1 · Introduction</summary><p>Good morning, respected teachers and my dear friends. My name is Somesh Pal, and I am a student of B.Sc Computer Science. Today, I am going to present a seminar on Cyber Security. We use the internet for education, communication, banking, and entertainment. As technology grows, cyber threats also increase. In this presentation, I will explain cyber security, its main principles, common threats, and ways to stay safe.</p></details>
+ <details><summary>Slide 2 · Definition</summary><p>Cyber security is the practice of protecting computers, networks, applications, and information from unauthorized access, damage, or cyberattacks. It includes prevention, detection, response, and recovery. For example, protecting a college account with a unique password and multi-factor authentication is a simple cyber security practice.</p></details>
+ <details><summary>Slide 3 · CIA Triad</summary><p>Cyber security is based on three important principles called the CIA Triad. Confidentiality means keeping information private. Integrity means keeping data accurate and preventing improper changes. Availability means ensuring that systems and information are accessible when needed. These three principles are the foundation of information security.</p></details>
+ <details><summary>Slide 4 · Types</summary><p>There are different types of cyber security. Network security protects networks. Application security protects software. Information security protects data. Cloud security protects online services and stored information. Endpoint security protects devices such as laptops and smartphones. These areas work together to create stronger protection.</p></details>
+ <details><summary>Slide 5 · Threats</summary><p>Some common cyber threats are phishing, malware, ransomware, password attacks, and identity theft. Phishing uses fake messages or websites to trick people. Malware is harmful software. Ransomware can lock or encrypt data and demand payment. These threats can affect individuals, organizations, and governments.</p></details>
+ <details><summary>Slide 6 · Importance</summary><p>Cyber security is important because it protects personal and financial information, prevents unauthorized access, reduces financial losses, and supports privacy. Our online accounts, banking applications, college records, and personal photos all need protection.</p></details>
+ <details><summary>Slide 7 · Safety and conclusion</summary><p>We can stay safer by using strong and unique passwords, enabling two-factor authentication, avoiding suspicious links, updating software, and backing up important files. To conclude, cyber security is essential in our digital world. It is not only the responsibility of experts; it is everyone's responsibility. Thank you for your valuable time and attention. I am ready to answer your questions.</p></details>
+ </div>
+</section>
+
+<section id="quiz" class="section">
+ <div class="panel"><div class="eyebrow">Test yourself</div><h2>Quick Cyber Security Quiz</h2><p>Choose an answer for each question, then check your score.</p>
+ <form id="quizForm">
+ <div class="quiz-question"><strong>1. What does the “C” in CIA Triad stand for?</strong><label><input type="radio" name="q1" value="a"> Cyber</label><label><input type="radio" name="q1" value="b"> Confidentiality</label><label><input type="radio" name="q1" value="c"> Connection</label></div>
+ <div class="quiz-question"><strong>2. What is phishing?</strong><label><input type="radio" name="q2" value="a"> A fake message designed to trick people</label><label><input type="radio" name="q2" value="b"> A backup method</label><label><input type="radio" name="q2" value="c"> A software update</label></div>
+ <div class="quiz-question"><strong>3. Which action improves account security?</strong><label><input type="radio" name="q3" value="a"> Reusing one password everywhere</label><label><input type="radio" name="q3" value="b"> Sharing your one-time code</label><label><input type="radio" name="q3" value="c"> Enabling multi-factor authentication</label></div>
+ <div class="quiz-question"><strong>4. What does a firewall generally do?</strong><label><input type="radio" name="q4" value="a"> Controls network traffic</label><label><input type="radio" name="q4" value="b"> Creates passwords automatically</label><label><input type="radio" name="q4" value="c"> Repairs hardware</label></div>
+ <div class="quiz-question"><strong>5. What is ransomware?</strong><label><input type="radio" name="q5" value="a"> A safe cloud service</label><label><input type="radio" name="q5" value="b"> Malware that locks/encrypts data and demands payment</label><label><input type="radio" name="q5" value="c"> A type of monitor</label></div>
+ <button class="primary" type="button" onclick="checkQuiz()">Check my answers</button><button type="reset" onclick="document.getElementById('quizResult').textContent=''">Reset</button><div id="quizResult" class="result" aria-live="polite"></div>
+ </form></div>
+</section>
+
+<section id="questions" class="section">
+ <div class="panel"><div class="eyebrow">Viva preparation</div><h2>Possible Teacher Questions & Answers</h2>
+ <details><summary>1. What is cyber security?</summary><p>It is the practice of protecting computers, networks, applications, and data from cyber threats and unauthorized access.</p></details>
+ <details><summary>2. What is the CIA Triad?</summary><p>It is a security model consisting of Confidentiality, Integrity, and Availability.</p></details>
+ <details><summary>3. What is phishing?</summary><p>Phishing is a social-engineering attack that uses fake messages or websites to steal information or persuade people to take unsafe actions.</p></details>
+ <details><summary>4. What is malware?</summary><p>Malware is malicious software designed to damage, disrupt, spy on, or gain unauthorized access to systems.</p></details>
+ <details><summary>5. What is a firewall?</summary><p>A firewall monitors and controls incoming and outgoing network traffic based on security rules.</p></details>
+ <details><summary>6. What is two-factor authentication?</summary><p>It is a login method that requires two different verification factors to help confirm a user's identity.</p></details>
+ <details><summary>7. What is ransomware?</summary><p>Ransomware is malware that encrypts or locks data and demands payment for its recovery.</p></details>
+ <details><summary>8. Are all hackers cybercriminals?</summary><p>No. Some hackers work with permission to test and improve security. Cybercriminals use technology for illegal activities.</p></details>
+ <details><summary>9. What is the difference between HTTP and HTTPS?</summary><p>HTTPS uses TLS encryption to protect data in transit between a browser and a website. HTTP does not provide that transport encryption.</p></details>
+ <details><summary>10. Why did you choose this topic?</summary><p>I chose cyber security because it is important in computer science and our daily digital lives. I want to learn how to protect information and use technology safely.</p></details>
+ </div>
+</section>
+</main>
+<footer>Cyber Security Seminar · B.Sc Computer Science · Prepared for learning and presentation practice</footer>
+<script>
+function showSection(id,btn){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+ const target=document.getElementById(id); if(target) target.classList.add('show');
+ document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+ if(btn) btn.classList.add('active');
+ else {document.querySelectorAll('.tabs button').forEach(b=>{if(b.getAttribute('onclick')?.includes("'"+id+"'"))b.classList.add('active')})}
+ window.scrollTo({top:document.querySelector('.tabs').offsetTop-95,behavior:'smooth'});
+}
+function checkQuiz(){
+ const answers={q1:'b',q2:'a',q3:'c',q4:'a',q5:'b'};let score=0;
+ for(const [q,a] of Object.entries(answers)){const chosen=document.querySelector('input[name="'+q+'"]:checked');if(chosen&&chosen.value===a)score++}
+ document.getElementById('quizResult').textContent='Your score: '+score+' / 5 '+(score===5?'Excellent!':score>=3?'Good work—review the topics you missed.':'Keep practicing and try again.');
+}
+</script>
+</body>
+</html>
